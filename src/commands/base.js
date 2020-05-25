@@ -23,8 +23,7 @@ class Command {
    * @property {string} [format] - The command usage format string - will be automatically generated if not specified,
    * and `args` is specified
    * @property {string} [details] - A detailed description of the command and its functionality
-   * @property {string} [image] - A image url that represents the extended functionality of the command
-   * @property {string} [image] - A image url that represents the extended functionality of the command
+   * @property {string} image - A image url that represents the extended functionality of the command
    * @property {string[]} [examples] - Usage examples of the command
    * @property {boolean} [guildOnly=false] - Whether or not the command should only function in a guild channel
    * @property {boolean} [ownerOnly=false] - Whether or not the command is usable only by an owner
