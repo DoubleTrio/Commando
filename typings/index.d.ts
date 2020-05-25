@@ -142,6 +142,7 @@ declare module 'discord.js-commando' {
     public throttling: ThrottlingOptions;
     public unknown: boolean;
     public userPermissions: PermissionResolvable[];
+    public image: string;
 
     public hasPermission(
       message: CommandoMessage,
