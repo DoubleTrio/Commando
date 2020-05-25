@@ -110,7 +110,6 @@ declare module 'discord.js-commando' {
 
   export class Command {
     public constructor(client: CommandoClient, info: CommandInfo);
-
     private _globalEnabled: boolean;
     private _throttles: Map<string, object>;
 
@@ -133,6 +132,7 @@ declare module 'discord.js-commando' {
     public groupID: string;
     public guarded: boolean;
     public hidden: boolean;
+    public image: string;
     public guildOnly: boolean;
     public memberName: string;
     public name: string;
@@ -142,7 +142,6 @@ declare module 'discord.js-commando' {
     public throttling: ThrottlingOptions;
     public unknown: boolean;
     public userPermissions: PermissionResolvable[];
-    public image: string;
 
     public hasPermission(
       message: CommandoMessage,
