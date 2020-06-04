@@ -24,6 +24,7 @@ class Command {
    * and `args` is specified
    * @property {string} [details] - A detailed description of the command and its functionality
    * @property {string} image - A image url that represents the extended functionality of the command
+   * @property {boolean} hasLeaderboard - Whether the game has a leaderboard or not
    * @property {string[]} [examples] - Usage examples of the command
    * @property {boolean} [guildOnly=false] - Whether or not the command should only function in a guild channel
    * @property {boolean} [ownerOnly=false] - Whether or not the command is usable only by an owner
@@ -129,10 +130,15 @@ class Command {
      */
     this.image = info.image || null;
     /**
+     * Boolean of whether game has leaderboard
+     * @type {?boolean}
+     */
+    this.hasLeaderboard = info.hasLeaderboard || null;
+    this.examples = info.examples || null;
+    /**
      * Example usage strings
      * @type {?string[]}
      */
-    this.examples = info.examples || null;
 
     /**
      * Whether the command can only be run in a guild channel

@@ -131,6 +131,7 @@ declare module 'discord.js-commando' {
     public group: CommandGroup;
     public groupID: string;
     public guarded: boolean;
+    public hasLeaderboard: boolean;
     public hidden: boolean;
     public image: string;
     public guildOnly: boolean;
@@ -899,6 +900,7 @@ declare module 'discord.js-commando' {
     hidden?: boolean;
     unknown?: boolean;
     image?: string;
+    hasLeaderboard?: boolean;
   }
 
   export interface CommandoClientOptions extends ClientOptions {
