@@ -25,6 +25,7 @@ class Command {
    * @property {string} [details] - A detailed description of the command and its functionality
    * @property {string} image - A image url that represents the extended functionality of the command
    * @property {boolean} hasLeaderboard - Whether the game has a leaderboard or not
+   * @property {number} timeLimit
    * @property {string[]} [examples] - Usage examples of the command
    * @property {boolean} [guildOnly=false] - Whether or not the command should only function in a guild channel
    * @property {boolean} [ownerOnly=false] - Whether or not the command is usable only by an owner
@@ -134,11 +135,16 @@ class Command {
      * @type {?boolean}
      */
     this.hasLeaderboard = info.hasLeaderboard || null;
-    this.examples = info.examples || null;
+    /**
+     * Time limit of game per round
+     * @type {?number}
+     */
+    this.timeLimit = info.timeLimit || null;
     /**
      * Example usage strings
      * @type {?string[]}
      */
+    this.examples = info.examples || null;
 
     /**
      * Whether the command can only be run in a guild channel
@@ -330,29 +336,31 @@ class Command {
   onBlock(message, reason, data) {
     switch (reason) {
       case 'guildOnly':
-        return message.reply(
-          `The \`${this.name}\` command must be used in a server channel.`,
+        return message.say(
+          `Stand back! The \`${this.name}\` command must be used in a server channel.`,
         );
       case 'nsfw':
-        return message.reply(
-          `The \`${this.name}\` command can only be used in NSFW channels.`,
+        return message.say(
+          `Woah there... The \`${this.name}\` command can only be used in NSFW channels.`,
         );
       case 'permission': {
-        if (data.response) return message.reply(data.response);
-        return message.reply(
-          `You do not have permission to use the \`${this.name}\` command.`,
+        if (data.response) return message.say(data.response);
+        return message.say(
+          `Hey, you do not have permission to use the \`${this.name}\` command.`,
         );
       }
       case 'clientPermissions': {
         if (data.missing.length === 1) {
-          return message.reply(
-            `I need the "${
+          return message.say(
+            `Hey there! I need the "${
               permissions[data.missing[0]]
             }" permission for the \`${this.name}\` command to work.`,
           );
         }
-        return message.reply(oneLine`
-					I need the following permissions for the \`${this.name}\` command to work:
+        return message.say(oneLine`
+					Hey there! I need the following permissions for the \`${
+            this.name
+          }\` command to work:
 					${data.missing.map((perm) => permissions[perm]).join(', ')}
 				`);
       }
@@ -392,13 +400,15 @@ class Command {
       : '';
 
     const invite = this.client.options.invite;
-    return message.reply(stripIndents`
-			An error occurred while running the command: \`${err.name}: ${err.message}\`
-			You shouldn't ever receive an error like this.
-			Please contact ${ownerList || 'the bot owner'}${
-      invite ? ` in this server: ${invite}` : '.'
-    }
-		`);
+    return message.say(
+      `Looks like ${
+        ownerList || 'the bot owner'
+      } Javascripted badly. >:( Here is what the error likes like! \`${
+        err.name
+      }: ${err.message}\`You should probably contact ${
+        ownerList || 'the bot owner'
+      }}`,
+    );
   }
 
   /**

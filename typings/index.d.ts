@@ -134,6 +134,7 @@ declare module 'discord.js-commando' {
     public hasLeaderboard: boolean;
     public hidden: boolean;
     public image: string;
+    public timeLimit: number;
     public guildOnly: boolean;
     public memberName: string;
     public name: string;
@@ -900,6 +901,7 @@ declare module 'discord.js-commando' {
     hidden?: boolean;
     unknown?: boolean;
     image?: string;
+    timeLimit?: number;
     hasLeaderboard?: boolean;
   }
 
