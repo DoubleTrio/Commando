@@ -567,15 +567,7 @@ class Command {
       prefixPart = `\`\`${prefix}${nbcmd}\`\``;
     }
 
-    let mentionPart;
-    if (user)
-      mentionPart = `\`\`@${user.username.replace(/ /g, '\xa0')}#${
-        user.discriminator
-      }\xa0${nbcmd}\`\``;
-
-    return `${prefixPart || ''}${prefix && user ? ' or ' : ''}${
-      mentionPart || ''
-    }`;
+    return `${prefixPart || ''}`;
   }
 
   /**

@@ -251,7 +251,7 @@ module.exports = Structures.extend('Message', (Message) => {
           //     collResult,
           //   );
           return this.say(
-            'Invalid arguments, check out the helo command to see the correct arguments',
+            'Invalid arguments, check out the help command to see the correct arguments',
           );
         }
         args = collResult.values;
