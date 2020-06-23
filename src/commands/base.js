@@ -403,11 +403,9 @@ class Command {
     return message.say(
       `Looks like ${
         ownerList || 'the bot owner'
-      } Javascripted badly. >:( Here is what the error likes like! \`${
-        err.name
-      }: ${err.message}\`You should probably contact ${
-        ownerList || 'the bot owner'
-      }}`,
+      } messed up his code! Here is what the error likes like! \`${err.name}: ${
+        err.message
+      }\`Be a nice person and contact ${ownerList || 'the bot owner'}!`,
     );
   }
 
@@ -567,7 +565,15 @@ class Command {
       prefixPart = `\`\`${prefix}${nbcmd}\`\``;
     }
 
-    return `${prefixPart || ''}`;
+    let mentionPart;
+    if (user)
+      mentionPart = `\`\`@${user.username.replace(/ /g, '\xa0')}#${
+        user.discriminator
+      }\xa0${nbcmd}\`\``;
+
+    return `${prefixPart || ''}${prefix && user ? ' or ' : ''}${
+      mentionPart || ''
+    }`;
   }
 
   /**

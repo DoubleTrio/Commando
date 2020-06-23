@@ -637,7 +637,7 @@ declare module 'discord.js-commando' {
     private _commandsEnabled: object;
     private _groupsEnabled: object;
     private _settings: GuildSettingsHelper;
-
+    public shouldAddToastOnMessage: boolean;
     public commandPrefix: string;
     public readonly settings: GuildSettingsHelper;
 

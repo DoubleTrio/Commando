@@ -6,7 +6,7 @@ const FriendlyError = require('./friendly');
  */
 class CommandFormatError extends FriendlyError {
   /**
-   * @param {CommandoMessage} msg - The command message the error is for
+   * @param {CommandoMessage} msg - The commad message the error is for
    */
   constructor(msg) {
     super(
@@ -14,7 +14,7 @@ class CommandFormatError extends FriendlyError {
         `help ${msg.command.name}`,
         msg.guild ? undefined : null,
         msg.guild ? undefined : null,
-      )} to check out how to use the command!.`,
+      )} to check out how to use the command!`,
     );
     this.name = 'CommandFormatError';
   }
